@@ -4,7 +4,7 @@ class backgroundObjects extends MovableObject {
     height = 480;
 
     /**
-     * Needed Parameter from Movable-Object.class.js
+     * 
      * 
      * @param {*} imagePath - loads Background Images with Path
      * @param {*} x - get x Coordinates from Movable-Object.class.js
