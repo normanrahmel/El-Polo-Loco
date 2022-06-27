@@ -12,7 +12,9 @@ class World {
     ];
 
     backgroundObjects = [
-        new backgroundObjects('img/5_background/complete_background.png')
+        new backgroundObjects('img/5_background/layers/3_third_layer/1.png', 0),
+        new backgroundObjects('img/5_background/layers/2_second_layer/1.png', 0),
+        new backgroundObjects('img/5_background/layers/1_first_layer/2.png', 0)
     ];
     canvas;
     ctx;
@@ -30,23 +32,10 @@ class World {
         //Deletes the object each time the draw function is called
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        //Sets the Character 
+        this.addObjectsToMap(this.backgroundObjects);
         this.addToMap(this.character);
-
-        //Sets the Chicken 
-        this.enemies.forEach(enemy => {
-            this.addToMap(enemy);
-        });
-
-        //Sets the Clouds  
-        this.clouds.forEach(cloud => {
-            this.addToMap(cloud);
-        });
-
-        //Sets the Background  
-        this.backgroundObjects.forEach(bgo => {
-            this.addToMap(bgo);
-        });
+        this.addObjectsToMap(this.clouds);
+        this.addObjectsToMap(this.enemies);
 
         /**
          * this. is no longer detected in the requestAnimationFrame
@@ -58,7 +47,20 @@ class World {
         });
     }
 
+    /**
+     * Sets the Objects 
+     * The objects are the Background, Clouds, Chicken 
+     */
+    addObjectsToMap(objects) {
+        objects.forEach(o => {
+            this.addToMap(o);
+        });
+    }
 
+    /**
+     * It summarizes the mo because all are equal
+     * mo=movabel obejcts
+     */
     addToMap(mo) {
         this.ctx.drawImage(mo.img, mo.x, mo.y, mo.height, mo.width);
     }
