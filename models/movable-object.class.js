@@ -5,6 +5,8 @@ class MovableObject {
     height = 100;
     width = 100;
     imageCache = {};
+    currenImage = 0;
+    speed = 0.15;
 
 
     loadImage(path) {
@@ -14,8 +16,9 @@ class MovableObject {
 
 
     /**
-     * Aus der class Character wir ein Array in die Funktion loadImages mit 6. Bildern von Pepe reingeben.
-     * Dann definiere ich eine Variable img und weiße ihr das Objekt "new Image(); zu"
+     * 
+     * From the class Character we put an array into the function loadImages with 6. images of Pepe.
+     * Then I define a variable img and assign it the object "new Image();".
      * 
      * @param {Array} arr - ['img/image1.png', 'img/image2.png'] 
      */
@@ -35,7 +38,9 @@ class MovableObject {
 
 
     moveLeft() {
-
+        setInterval(() => {
+            this.x -= this.speed;
+        }, 1000 / 60)
     }
 
 }
