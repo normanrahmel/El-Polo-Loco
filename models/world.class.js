@@ -1,25 +1,13 @@
 class World {
-
+    //Variablen
     character = new Character();
-    enemies = [
-        new Chicken(),
-        new Chicken(),
-        new Chicken(),
-    ];
-
-    clouds = [
-        new Cloud()
-    ];
-
-    backgroundObjects = [
-        new backgroundObjects('img/5_background/layers/air.png', 0),
-        new backgroundObjects('img/5_background/layers/3_third_layer/1.png', 0),
-        new backgroundObjects('img/5_background/layers/2_second_layer/1.png', 0),
-        new backgroundObjects('img/5_background/layers/1_first_layer/1.png', 0)
-    ];
+    enemies = level1.enemies;
+    clouds = level1.clouds;
+    backgroundObjects = level1.backgroundObjects;
     canvas;
     ctx;
     keyboard;
+    camera_x = 0;
 
 
     constructor(canvas, keyboard) {
@@ -41,11 +29,14 @@ class World {
         //Deletes the object each time the draw function is called
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
+        this.ctx.translate(this.camera_x, 0); //here i move the whole picture to the left
+
         this.addObjectsToMap(this.backgroundObjects);
         this.addToMap(this.character);
         this.addObjectsToMap(this.clouds);
         this.addObjectsToMap(this.enemies);
 
+        this.ctx.translate(-this.camera_x, 0); //here i move the whole picture back to the right
         /**
          * this. is no longer detected in the requestAnimationFrame
          * With requestAnimationFrame the draw method is called as often as the graphics card allows it
