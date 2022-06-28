@@ -1,7 +1,7 @@
 class Character extends MovableObject {
     x = 120;
     y = 215;
-
+    World;
     width = 150;
     height = 205;
     IMAGES_WALKING = [
@@ -22,10 +22,14 @@ class Character extends MovableObject {
 
     animate() {
         setInterval(() => {
-            let i = this.currenImage % this.IMAGES_WALKING.length; // let i = 0 REST 6; i = 0, 1, 2, 3, 4, 5, 0
-            let path = this.IMAGES_WALKING[i];
-            this.img = this.imageCache[path];
-            this.currenImage++;
+
+            if (this.World.Keyboard.RIGHT) {
+
+                let i = this.currenImage % this.IMAGES_WALKING.length; // let i = 0 REST 6; i = 0, 1, 2, 3, 4, 5, 0
+                let path = this.IMAGES_WALKING[i];
+                this.img = this.imageCache[path];
+                this.currenImage++;
+            }
         }, 100);
     }
 
