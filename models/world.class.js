@@ -1,9 +1,6 @@
 class World {
     //Variablen
     character = new Character();
-    //enemies = level1.enemies;
-    //clouds = level1.clouds;
-    //backgroundObjects = level1.backgroundObjects;
     level = level1;
     canvas;
     ctx;

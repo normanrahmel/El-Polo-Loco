@@ -14,6 +14,8 @@ class Character extends MovableObject {
         './img/2_character_pepe/2_walk/W-26.png'
     ];
 
+    walking_sound = new Audio('audio/running.mp3'); //Walking sound. The Mp3 file is not so good i need to look for a better one.
+
 
     constructor() {
         super().loadImage('./img/2_character_pepe/2_walk/W-21.png');
@@ -23,13 +25,16 @@ class Character extends MovableObject {
 
     animate() {
         setInterval(() => {
+            this.walking_sound.pause();
             if (this.World.keyboard.RIGHT && this.x < this.World.level.level_end_x) {
                 this.x += this.speed;
                 this.otherDirection = false;
+                this.walking_sound.play();
             }
             if (this.World.keyboard.LEFT && this.x > 0) {
                 this.x -= this.speed;
                 this.otherDirection = true;
+                this.walking_sound.play();
             }
             this.World.camera_x = -this.x + 100;
         }, 1000 / 60);
@@ -37,12 +42,8 @@ class Character extends MovableObject {
         setInterval(() => {
 
             if (this.World.keyboard.RIGHT || this.World.keyboard.LEFT) {
-
-                //Walk animation
-                let i = this.currenImage % this.IMAGES_WALKING.length; // let i = 0 REST 6; i = 0, 1, 2, 3, 4, 5, 0
-                let path = this.IMAGES_WALKING[i];
-                this.img = this.imageCache[path];
-                this.currenImage++;
+                //Walk animation is in the MO Defined
+                this.playAnimation(this.IMAGES_WALKING);
             }
         }, 50);
     }
