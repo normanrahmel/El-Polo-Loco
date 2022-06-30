@@ -11,6 +11,7 @@ class MovableObject {
     speedY = 0;
     acceleration = 2.5;
     energy = 100;
+    lastHit = 0;
 
 
     /**
@@ -33,6 +34,8 @@ class MovableObject {
         this.energy -= 5;
         if (this.energy < 0) {
             this.energy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
         }
     }
 
@@ -43,6 +46,15 @@ class MovableObject {
      */
     isDead() {
         return this.energy == 0;
+    }
+
+    /**
+     *  Date.getTime() Millisekunden since the 1.1.1970 - lastHit;
+     */
+    isHurt() {
+        let timePassed = new Date().getTime() - this.lastHit; // Difference in ms
+        timePassed = timePassed / 1000; // Difference in seconds
+        return timePassed < 1;
     }
 
 
@@ -105,7 +117,7 @@ class MovableObject {
     }
 
     playAnimation(images) {
-        let i = this.currenImage % this.IMAGES_WALKING.length; // let i = 0 REST 6; i = 0, 1, 2, 3, 4, 5, 0
+        let i = this.currenImage % images.length; // let i = 0 REST 6; i = 0, 1, 2, 3, 4, 5, 0
         let path = images[i];
         this.img = this.imageCache[path];
         this.currenImage++;
