@@ -1,5 +1,7 @@
 class World {
-    //Variablen
+    /**
+     * Global variables for the class
+     */
     character = new Character();
     level = level1;
     canvas;

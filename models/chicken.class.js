@@ -1,5 +1,7 @@
 class Chicken extends MovableObject {
-
+    /**
+     * Global variables for the class
+     */
     x = 120;
     y = 350;
     height = 80;

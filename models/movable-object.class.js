@@ -1,11 +1,7 @@
-class MovableObject {
-    x = 120;
-    y = 190;
-    img;
-    height = 100;
-    width = 100;
-    imageCache = {};
-    currenImage = 0;
+class MovableObject extends DrawableObject {
+    /**
+     * Global variables for the class
+     */
     speed = 0.15;
     otherDirection = false;
     speedY = 0;
@@ -48,6 +44,7 @@ class MovableObject {
         return this.energy == 0;
     }
 
+
     /**
      *  Date.getTime() Millisekunden since the 1.1.1970 - lastHit;
      */
@@ -67,11 +64,6 @@ class MovableObject {
     }
 
 
-    draw(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-    }
-
-
     drawFrame(ctx) {
         if (this instanceof Character || this instanceof Chicken) {
             ctx.beginPath();
@@ -80,12 +72,6 @@ class MovableObject {
             ctx.rect(this.x, this.y, this.width, this.height);
             ctx.stroke();
         }
-    }
-
-
-    loadImage(path) {
-        this.img = new Image();
-        this.img.src = path;
     }
 
 
@@ -100,28 +86,13 @@ class MovableObject {
     }
 
 
-    /**
-     * 
-     * From the class Character we put an array into the function loadImages with 6. images of Pepe.
-     * Then I define a variable img and assign it the object "new Image();".
-     * 
-     * @param {Array} arr - ['img/image1.png', 'img/image2.png'] 
-     */
-    loadImages(arr) {
-        arr.forEach((path) => {
-            let img = new Image();
-            img.src = path;
-            this.imageCache[path] = img;
-        });
-
-    }
-
     playAnimation(images) {
         let i = this.currenImage % images.length; // let i = 0 REST 6; i = 0, 1, 2, 3, 4, 5, 0
         let path = images[i];
         this.img = this.imageCache[path];
         this.currenImage++;
     }
+
 
     moveRight() {
         this.x += this.speed;

@@ -1,4 +1,7 @@
 class Character extends MovableObject {
+    /**
+     * Global variables for the class
+     */
     x = 120;
     y = 80;
     World;
@@ -52,6 +55,7 @@ class Character extends MovableObject {
         this.applyGravity();
         this.animate();
     }
+
 
     animate() {
         setInterval(() => {

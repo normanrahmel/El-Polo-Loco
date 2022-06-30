@@ -1,8 +1,10 @@
 class Endboss extends MovableObject {
+    /**
+     * Global variables for the class
+     */
     height = 400;
     width = 250;
     y = 60;
-
 
     IMAGES_WALKING = [
         'img/4_enemie_boss_chicken/2_alert/G5.png',
@@ -20,6 +22,7 @@ class Endboss extends MovableObject {
         this.x = 2500;
         this.animate();
     }
+
 
     animate() {
 
