@@ -1,4 +1,4 @@
-class StatusBar {
+class StatusBar extends DrawableObject {
     /**
      * Global variables for the class
      */
