@@ -68,7 +68,7 @@ class World {
         //Fixed the camera perspective for the status bar
         this.ctx.translate(-this.camera_x, 0); //Back
         this.addToMap(this.statusBar);
-        his.ctx.translate(this.camera_x, 0); //Forwards
+        this.ctx.translate(this.camera_x, 0); //Forwards
 
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.clouds);
