@@ -36,14 +36,14 @@ canvas {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -100px;
+    margin-top: 25px;
 }
 
 
 /*Button*/
 
 .button-36 {
-    background-image: linear-gradient(92.88deg, #9f2209 9.16%, #ffde00 43.89%, #2ba9cd 64.72%);
+    background-image: linear-gradient( #ffde00 43.89%, #ffde00 64.72%);
     border-radius: 8px;
     border-style: none;
     box-sizing: border-box;
