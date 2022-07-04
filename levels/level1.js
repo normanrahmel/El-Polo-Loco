@@ -45,3 +45,9 @@ const level1 = new Level(
         new backgroundObjects('img/5_background/layers/1_first_layer/2.png', 719 * 3),
 
     ]);
+
+function showGame() {
+    document.getElementById('removeScreen').classList.add('d-none');
+    document.getElementById('canvas').classList.remove('d-none');
+    document.getElementById('overline').classList.remove('d-none')
+}
