@@ -9,6 +9,9 @@ class World {
     keyboard;
     camera_x = 0;
     statusBar = new StatusBar();
+    coinBar = new CoinBar();
+    bottelBar = new BottleBar();
+    coin = new Coin();
     throwableObjects = [];
 
 
@@ -68,8 +71,11 @@ class World {
         //Fixed the camera perspective for the status bar
         this.ctx.translate(-this.camera_x, 0); //Back
         this.addToMap(this.statusBar);
+        this.addToMap(this.coinBar);
+        this.addToMap(this.bottelBar);
         this.ctx.translate(this.camera_x, 0); //Forwards
 
+        this.addToMap(this.coin);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
