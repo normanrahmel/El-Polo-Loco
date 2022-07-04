@@ -105,23 +105,10 @@ class MovableObject extends DrawableObject {
     showGameLose() {
         setTimeout(() => {
             document.getElementById('canvas').classList.add('d-none');
-        }, 2500);
+            document.getElementById('showEndScreen').classList.remove('d-none');
+            document.getElementById('overline').classList.add('d-none');
+        }, 1500);
 
     }
 
-    gameLose() {
-        return /*html*/ `
-      <div class="endScreen">
-            <div>
-                <img src="img/9_intro_outro_screens/game_over/game over.png" >
-                <div class="buttonStartGame">
-                    <button class="button-36" onclick="init(); showGame()">Start Again</button>
-                </div>
-            </div>
-        </div>
-        
-        
-        `;
-
-    }
 }

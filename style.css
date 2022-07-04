@@ -19,7 +19,7 @@ canvas {
 }
 
 .d-none {
-    display: none;
+    display: none !important;
 }
 
 .endScreen {
@@ -28,6 +28,12 @@ canvas {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.endScreenImg img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
 }
 
 .startScreen {

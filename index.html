@@ -33,7 +33,8 @@
     <h1 class="d-none" id="overline">El-Polo-Loco</h1>
     <canvas class="d-none" id="canvas" width="720" height="480"></canvas>
 
-    <div class="startScreen">
+    <!--STARTSCREEN-->
+    <div class="startScreen" id="removeGameOver">
         <div id="removeScreen">
             <img src="img/9_intro_outro_screens/start/startscreen_1.png" alt="">
             <div class="buttonStartGame">
@@ -41,8 +42,15 @@
             </div>
         </div>
     </div>
-
-
+    <!--ENDSCREEN-->
+    <div id="showEndScreen" class="endScreen d-none">
+        <div class="endScreenImg">
+            <img src="img/9_intro_outro_screens/game_over/game_over.png">
+            <div class="buttonStartGame">
+                <button style="margin-top: -135px;" class="button-36" onclick="showGameAgain()">Start Again</button>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
