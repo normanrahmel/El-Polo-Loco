@@ -1,7 +1,5 @@
 class Character extends MovableObject {
-    /**
-     * Global variables for the class
-     */
+
     x = 120;
     y = 80;
     World;
@@ -77,10 +75,15 @@ class Character extends MovableObject {
             this.World.camera_x = -this.x + 100;
         }, 1000 / 60);
 
+        let i = 0;
         setInterval(() => {
-
-            if (this.isDead()) {
+            if (this.isDead() && i < 5) {
                 this.playAnimation(this.IMAGES_DEAD);
+                i++;
+            } else if (this.isDead() && i >= 5) {
+                this.loadImage('img/2_character_pepe/5_dead/D-57.png');
+                this.showGameLose();
+                this.gameLose();
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
             } else if (this.isAboveGround()) {
