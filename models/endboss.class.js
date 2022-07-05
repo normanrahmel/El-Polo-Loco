@@ -1,7 +1,5 @@
 class Endboss extends MovableObject {
-    /**
-     * Global variables for the class
-     */
+
     height = 400;
     width = 250;
     y = 60;
@@ -36,12 +34,12 @@ class Endboss extends MovableObject {
  * New
  */
 /*
-class Endboss extends MovableObject{
-    
+class Endboss extends MovableObject {
+
     height = 450;
-    width= 300;
+    width = 300;
     energy = 200;
-    speed = 150 / 144;  // 150px/s
+    speed = 150 / 144; // 150px/s
     angry = false;
     attack = false;
     walking = false;
@@ -98,11 +96,11 @@ class Endboss extends MovableObject{
     ]
 
 
-    constructor(){
+    constructor() {
         super().loadImage(this.IMAGES_WAITING[0]);
 
         this.x = 2250;
-        this.y = 460 - this.height      // y-position - Bildhöhe, da von ober gezählt wird   
+        this.y = 460 - this.height // y-position - Bildhöhe, da von ober gezählt wird   
 
         this.loadImages(this.IMAGES_WAITING);
         this.loadImages(this.IMAGES_WALKING);
@@ -114,89 +112,80 @@ class Endboss extends MovableObject{
         setTimeout(() => {
             this.animate();
         }, 200);
-        
+
     }
 
-    animate(){
+    animate() {
 
         setInterval(() => {
-            if(this.energy <= 0){
+            if (this.energy <= 0) {
                 this.dead = true;
             }
-            if (this.x - world.character.x < 700 && !this.angry){
+            if (this.x - world.character.x < 700 && !this.angry) {
                 world.lifeBarEndboss.height = 60;
             }
-            if (this.x - world.character.x < 500 && !this.attack  && !this.walking ){
+            if (this.x - world.character.x < 500 && !this.attack && !this.walking) {
                 this.angry = true;
             }
-            if (this.energy < 200 && !this.walking && !this.attack){
+            if (this.energy < 200 && !this.walking && !this.attack) {
                 this.angry = true;
                 this.walking = true;
             }
-            if (this.x - world.character.x < 350 && this.x - world.character.x > 200){
+            if (this.x - world.character.x < 350 && this.x - world.character.x > 200) {
                 this.walking = true;
                 this.attack = false;
-            } 
-            if (this.x - world.character.x < 200){
+            }
+            if (this.x - world.character.x < 200) {
                 this.walking = false;
                 this.attack = true;
-            } 
+            }
         }, 100);
 
         let i = 0;
 
-        setInterval( () => {            //Kurzschreibweise einer Funktion.
-            if(this.dead && i < 3){
+        setInterval(() => {
+            if (this.dead && i < 3) {
                 this.playAnimation(this.IMAGES_DEAD);
                 i++;
-            }
-            else if (this.dead && i >= 3){
+            } else if (this.dead && i >= 3) {
                 this.loadImage('img/4_enemie_boss_chicken/5_dead/G26.png');
                 setTimeout(() => {
                     world.gameWin = true;
-                // console.log('Win');
-                }, 500);
-                
-            }
 
-            else if(this.hurt){
+                }, 500);
+
+            } else if (this.hurt) {
                 this.playAnimation(this.IMAGES_HURT);
                 setTimeout(() => {
                     this.hurt = false;
                 }, 500);
-            }
-            else if(!this.angry && !this.angry){
+            } else if (!this.angry && !this.angry) {
                 this.playAnimation(this.IMAGES_WAITING);
                 // console.log('waiting',this.angry, this.walking, this.attack)
-            }
-            else if(this.angry && !this.walking && !this.attack){
+            } else if (this.angry && !this.walking && !this.attack) {
                 this.playAnimation(this.IMAGES_ALERT);
                 // console.log('alert',this.angry, this.walking, this.attack)
-            }
-            else if(this.walking){
+            } else if (this.walking) {
                 this.playAnimation(this.IMAGES_WALKING);
                 // console.log('walking',this.angry, this.walking, this.attack)
-            }
-            else if(this.attack){
+            } else if (this.attack) {
                 this.playAnimation(this.IMAGES_ATTACK);
                 // console.log('attack',this.angry, this.walking, this.attack)
             }
-            
+
         }, 175);
 
         setInterval(() => {
-            if(this.walking && !this.hurt && !this.dead || this.attack && !this.hurt && !this.dead){
-                if(this.x - world.character.x >= 50){                  
+            if (this.walking && !this.hurt && !this.dead || this.attack && !this.hurt && !this.dead) {
+                if (this.x - world.character.x >= 50) {
                     this.moveLeft();
                 }
-                if(this.x - world.character.x < 10){                   
+                if (this.x - world.character.x < 10) {
                     this.moveRight();
-                }               
+                }
             }
-            
-        }, 1000/144);
+
+        }, 1000 / 144);
+
     }
-}
-
-
-*/
+    */

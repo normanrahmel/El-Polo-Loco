@@ -7,7 +7,7 @@ class Level {
 
     coins;
 
-    bottel;
+    bottle;
 
     level_end_x = 2200;
 
@@ -21,11 +21,11 @@ class Level {
      * @param {*} coins 
      */
 
-    constructor(enemies, clouds, backgroundObjects, coins, bottel) {
+    constructor(enemies, clouds, backgroundObjects, coins, bottle) {
         this.enemies = enemies;
         this.clouds = clouds;
         this.backgroundObjects = backgroundObjects;
         this.coins = coins;
-        this.bottel = bottel;
+        this.bottle = bottle;
     }
 }

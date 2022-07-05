@@ -78,29 +78,22 @@ const level1 = new Level(
         new Coin(),
         new Coin()
 
-    ], [new Bottel(),
-        new Bottel(),
-        new Bottel(),
-        new Bottel(),
-        new Bottel(),
-        new Bottel(),
-        new Bottel(),
-        new Bottel(),
-        new Bottel(),
-        new Bottel(),
-        new Bottel(),
-        new Bottel(),
-        new Bottel(),
-        new Bottel(),
-        new Bottel(),
-        new Bottel(),
-        new Bottel(),
-        new Bottel(),
-        new Bottel(),
-        new Bottel(),
-        new Bottel(),
-        new Bottel(),
-        new Bottel()
+    ], [
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle()
     ]);
 
 function showGame() {
@@ -112,6 +105,4 @@ function showGame() {
 
 function showGameAgain() {
     window.location.reload();
-    document.getElementById('removeGameOver').classList.add('d-none');
-
 }

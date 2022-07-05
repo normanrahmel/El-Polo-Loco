@@ -107,6 +107,7 @@ class MovableObject extends DrawableObject {
             document.getElementById('canvas').classList.add('d-none');
             document.getElementById('showEndScreen').classList.remove('d-none');
             document.getElementById('overline').classList.add('d-none');
+            document.getElementById('removeGameOver').classList.add('d-none');
         }, 1500);
 
     }
