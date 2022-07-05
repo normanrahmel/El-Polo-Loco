@@ -80,11 +80,10 @@ class Character extends MovableObject {
             if (this.isDead() && i < 5) {
                 this.playAnimation(this.IMAGES_DEAD);
                 i++;
+                this.walking_sound.pause();
             } else if (this.isDead() && i >= 5) {
                 this.loadImage('img/2_character_pepe/5_dead/D-57.png');
                 this.showGameLose();
-
-                //this.gameLose();
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
             } else if (this.isAboveGround()) {

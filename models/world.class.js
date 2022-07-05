@@ -12,6 +12,7 @@ class World {
     coinBar = new CoinBar();
     bottelBar = new BottleBar();
     coin = new Coin();
+    bottel = new Bottel();
     throwableObjects = [];
 
 
@@ -49,6 +50,9 @@ class World {
     }
 
 
+    /**
+     * Collision detection with chicken
+     */
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
@@ -59,6 +63,41 @@ class World {
         });
     }
 
+    /**
+     * Collision detection with Bottel
+     */
+    /*  bottleCollision(){
+            this.level.bottle.forEach((bottle) => {
+                if(bottle.width > 0 && bottle.height > 0){
+                    if(this.character.isColliding(bottle)){
+                        bottle.width = 0;
+                        bottle.height = 0;
+                        this.bottleBar.collectBottle();
+                        this.bottleBar.setPercentage(this.bottleBar.percentage);
+                    }
+                }
+            })
+        }
+
+    /*
+     * Collision detection with Coins
+     */
+    /*
+        coinCollision(){
+            this.level.coins.forEach((coin) => {
+                if(coin.width > 0 && coin.height > 0){
+                    if(this.character.isColliding(coin)){
+                        coin.width = 0;
+                        coin.height = 0;
+                        this.coinBar.collectCoin();
+                        this.coinBar.setPercentage(this.coinBar.percentage);
+                        console.log(this.coinBar.percentage);
+                    }
+                }
+            })
+        }
+        
+        */
 
     draw() {
 
@@ -74,11 +113,13 @@ class World {
         this.addToMap(this.coinBar);
         this.addToMap(this.bottelBar);
         this.ctx.translate(this.camera_x, 0); //Forwards
-
-        this.addToMap(this.coin);
         this.addToMap(this.character);
+
+
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.level.coins);
+        this.addObjectsToMap(this.level.bottel);
         this.addObjectsToMap(this.throwableObjects);
 
         this.ctx.translate(-this.camera_x, 0); //here i move the whole picture back to the right
