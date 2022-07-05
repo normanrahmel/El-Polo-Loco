@@ -80,8 +80,8 @@ class World {
         this.level.bottle.forEach((bottle, index) => {
             if (this.character.isColliding(bottle)) {
                 this.level.bottle.splice(index, 1);
-                //this.bottleBar.collectBottle();
-                this.bottleBar.setPercentage(this.bottleBar.percentage);
+                this.character.bottels += 20;
+                this.bottleBar.setPercentage(this.character.bottels);
             }
         })
     }
