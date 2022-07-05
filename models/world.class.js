@@ -54,47 +54,52 @@ class World {
      * Collision detection with chicken
      */
     checkCollisions() {
+        this.bottleCollision();
+        this.enemiesCollisions();
+        this.coinCollision();
+    }
+
+
+    /**
+     * Collision detection with Chicken and Endboss
+     */
+    enemiesCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
             }
-
         });
     }
+
 
     /**
      * Collision detection with Bottel
      */
     bottleCollision() {
-        this.level.bottle.forEach((bottle) => {
-            if (bottle.width > 0 && bottle.height > 0) {
-                if (this.character.isColliding(bottle)) {
-                    bottle.width = 0;
-                    bottle.height = 0;
-                    this.bottleBar.collectBottle();
-                    this.bottleBar.setPercentage(this.bottleBar.percentage);
-                }
+        this.level.bottle.forEach((bottle, index) => {
+            if (this.character.isColliding(bottle)) {
+                this.level.bottle.splice(index, 1);
+                //this.bottleBar.collectBottle();
+                this.bottleBar.setPercentage(this.bottleBar.percentage);
             }
         })
     }
+
 
     /*
      * Collision detection with Coins
      */
     coinCollision() {
-        this.level.coins.forEach((coin) => {
-            if (coin.width > 0 && coin.height > 0) {
-                if (this.character.isColliding(coin)) {
-                    coin.width = 0;
-                    coin.height = 0;
-                    this.coinBar.collectCoin();
-                    this.coinBar.setPercentage(this.coinBar.percentage);
-                    console.log(this.coinBar.percentage);
-                }
+        this.level.coins.forEach((coin, index) => {
+            if (this.character.isColliding(coin)) {
+                this.level.coins.splice(index, 1);
+                //this.coinBar.collectCoin();
+                this.coinBar.setPercentage(this.coinBar.percentage);
             }
         })
     }
+
 
     draw() {
 
