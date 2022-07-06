@@ -53,3 +53,36 @@ window.addEventListener('keyup', (e) => {
     }
     console.log(e)
 });
+
+function showGameLose() {
+    setTimeout(() => {
+        document.getElementById('canvas').classList.add('d-none');
+        document.getElementById('showEndScreen').classList.remove('d-none');
+        document.getElementById('overline').classList.add('d-none');
+        document.getElementById('removeGameOver').classList.add('d-none');
+    }, 1000);
+
+}
+
+
+function showGameWin() {
+    setTimeout(() => {
+        document.getElementById('canvas').classList.add('d-none');
+        document.getElementById('showEndScreen').classList.remove('d-none');
+        document.getElementById('overline').classList.add('d-none');
+        document.getElementById('removeGameOver').classList.add('d-none');
+        document.getElementById('chanceImg').src = 'img/9_intro_outro_screens/pexels-nataliya-vaitkevich-6120398.jpg';
+    }, 1000);
+}
+
+
+function showGame() {
+    document.getElementById('removeScreen').classList.add('d-none');
+    document.getElementById('canvas').classList.remove('d-none');
+    document.getElementById('overline').classList.remove('d-none')
+}
+
+
+function showGameAgain() {
+    window.location.reload();
+}

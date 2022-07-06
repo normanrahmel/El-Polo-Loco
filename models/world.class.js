@@ -81,7 +81,7 @@ class World {
             if (this.character.isColliding(bottle)) {
                 this.level.bottle.splice(index, 1);
                 this.character.bottels += 20;
-                this.bottleBar.setPercentage(this.character.bottels);
+                //this.bottleBar.setPercentage(this.character.bottels);
             }
         })
     }

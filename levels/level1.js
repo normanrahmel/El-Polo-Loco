@@ -95,14 +95,3 @@ const level1 = new Level(
         new Bottle(),
         new Bottle()
     ]);
-
-function showGame() {
-    document.getElementById('removeScreen').classList.add('d-none');
-    document.getElementById('canvas').classList.remove('d-none');
-    document.getElementById('overline').classList.remove('d-none')
-}
-
-
-function showGameAgain() {
-    window.location.reload();
-}

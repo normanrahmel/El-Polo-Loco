@@ -7,6 +7,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
+    overflow: hidden;
 }
 
 h1 {
@@ -37,8 +38,9 @@ canvas {
 }
 
 .startScreen {
-    width: 80vw;
-    height: 90vh;
+    margin-top: 75px;
+    width: 60vw;
+    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -102,5 +104,14 @@ canvas {
     }
     h1 {
         display: none;
+    }
+}
+
+@media(max-width:1000px) {
+    .buttonStartGame {
+        margin-top: 125px;
+    }
+    .button-36 {
+        height: 3.5rem;
     }
 }

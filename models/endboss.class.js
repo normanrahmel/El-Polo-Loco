@@ -1,41 +1,5 @@
 class Endboss extends MovableObject {
 
-    height = 400;
-    width = 250;
-    y = 60;
-
-    IMAGES_WALKING = [
-        'img/4_enemie_boss_chicken/2_alert/G5.png',
-        'img/4_enemie_boss_chicken/2_alert/G6.png',
-        'img/4_enemie_boss_chicken/2_alert/G7.png',
-        'img/4_enemie_boss_chicken/2_alert/G8.png',
-        'img/4_enemie_boss_chicken/2_alert/G9.png',
-        'img/4_enemie_boss_chicken/2_alert/G10.png',
-        'img/4_enemie_boss_chicken/2_alert/G11.png',
-        'img/4_enemie_boss_chicken/2_alert/G12.png'
-    ];
-    constructor() {
-        super().loadImage(this.IMAGES_WALKING[0]);
-        this.loadImages(this.IMAGES_WALKING);
-        this.x = 2500;
-        this.animate();
-    }
-
-
-    animate() {
-
-        setInterval(() => {
-            this.playAnimation(this.IMAGES_WALKING);
-        }, 150)
-    }
-}
-
-/**
- * New
- */
-/*
-class Endboss extends MovableObject {
-
     height = 450;
     width = 300;
     energy = 200;
@@ -45,6 +9,7 @@ class Endboss extends MovableObject {
     walking = false;
     hurt = false;
     dead = false;
+    character;
 
     IMAGES_WAITING = [
         'img/4_enemie_boss_chicken/2_alert/G5.png',
@@ -100,7 +65,7 @@ class Endboss extends MovableObject {
         super().loadImage(this.IMAGES_WAITING[0]);
 
         this.x = 2250;
-        this.y = 460 - this.height // y-position - Bildhöhe, da von ober gezählt wird   
+        this.y = 460 - this.height;
 
         this.loadImages(this.IMAGES_WAITING);
         this.loadImages(this.IMAGES_WALKING);
@@ -121,12 +86,19 @@ class Endboss extends MovableObject {
             if (this.energy <= 0) {
                 this.dead = true;
             }
-            if (this.x - world.character.x < 700 && !this.angry) {
-                world.lifeBarEndboss.height = 60;
+            try {
+                if (this.x - world.character.x < 700 && !this.angry) {
+                    world.lifeBarEndboss.height = 60;
+                }
+            } catch (e) {
+                console.log(world.character.x);
             }
+
+
             if (this.x - world.character.x < 500 && !this.attack && !this.walking) {
                 this.angry = true;
             }
+
             if (this.energy < 200 && !this.walking && !this.attack) {
                 this.angry = true;
                 this.walking = true;
@@ -147,30 +119,32 @@ class Endboss extends MovableObject {
             if (this.dead && i < 3) {
                 this.playAnimation(this.IMAGES_DEAD);
                 i++;
+
             } else if (this.dead && i >= 3) {
                 this.loadImage('img/4_enemie_boss_chicken/5_dead/G26.png');
-                setTimeout(() => {
-                    world.gameWin = true;
-
-                }, 500);
+                showGameWin();
 
             } else if (this.hurt) {
                 this.playAnimation(this.IMAGES_HURT);
                 setTimeout(() => {
                     this.hurt = false;
                 }, 500);
+
             } else if (!this.angry && !this.angry) {
                 this.playAnimation(this.IMAGES_WAITING);
-                // console.log('waiting',this.angry, this.walking, this.attack)
+                // console.log('waiting', this.angry, this.walking, this.attack);
+
             } else if (this.angry && !this.walking && !this.attack) {
                 this.playAnimation(this.IMAGES_ALERT);
-                // console.log('alert',this.angry, this.walking, this.attack)
+                // console.log('alert', this.angry, this.walking, this.attack);
+
             } else if (this.walking) {
                 this.playAnimation(this.IMAGES_WALKING);
-                // console.log('walking',this.angry, this.walking, this.attack)
+                // console.log('walking', this.angry, this.walking, this.attack);
+
             } else if (this.attack) {
                 this.playAnimation(this.IMAGES_ATTACK);
-                // console.log('attack',this.angry, this.walking, this.attack)
+                // console.log('attack', this.angry, this.walking, this.attack);
             }
 
         }, 175);
@@ -184,8 +158,6 @@ class Endboss extends MovableObject {
                     this.moveRight();
                 }
             }
-
         }, 1000 / 144);
-
     }
-    */
+}
