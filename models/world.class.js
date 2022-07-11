@@ -74,6 +74,19 @@ class World {
 
 
     /**
+     * Collision detection with Chicken and Endboss
+     */
+    enemiesCollisionsWithBottle() {
+        this.level.enemies.forEach((bottle) => {
+            if (this.enemies.isColliding(bottle)) {
+                this.enemies.hit();
+                //this.statusBar.setPercentage(this.character.energy);
+            }
+        });
+    }
+
+
+    /**
      * Collision detection with Bottel
      */
     bottleCollision() {

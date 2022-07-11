@@ -58,7 +58,8 @@ class Chicken extends MovableObject {
 }
 
 
-/*Old*/
+
+/*Old-MY*/
 /*class Chicken extends MovableObject {
    
     x = 120;
