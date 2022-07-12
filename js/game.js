@@ -60,6 +60,7 @@ function showGameLose() {
         document.getElementById('showEndScreen').classList.remove('d-none');
         document.getElementById('overline').classList.add('d-none');
         document.getElementById('removeGameOver').classList.add('d-none');
+        document.getElementById('control-bar').classList.add('d-none');
     }, 1000);
 
 }
@@ -71,6 +72,7 @@ function showGameWin() {
         document.getElementById('showEndScreen').classList.remove('d-none');
         document.getElementById('overline').classList.add('d-none');
         document.getElementById('removeGameOver').classList.add('d-none');
+        document.getElementById('control-bar').classList.add('d-none');
         document.getElementById('chanceImg').src = 'img/9_intro_outro_screens/pexels-nataliya-vaitkevich-6120398.jpg';
     }, 1000);
 }
