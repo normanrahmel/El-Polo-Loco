@@ -4,7 +4,7 @@ class Endboss extends MovableObject {
     world;
     height = 450;
     width = 300;
-    energy = 200;
+    energy = 250;
     speed = 150 / 144; // 150px/s
     angry = false;
     attack = false;
@@ -88,10 +88,7 @@ class Endboss extends MovableObject {
             if (this.energy <= 0) {
                 this.dead = true;
             }
-            /*
-            if (this.x - world.character.x < 700 && !this.angry) {
-                world.lifeBarEndboss.height = 60;
-            }*/
+
             if (this.x - world.character.x < 500 && !this.attack && !this.walking) {
                 this.angry = true;
             }
@@ -100,10 +97,12 @@ class Endboss extends MovableObject {
                 this.angry = true;
                 this.walking = true;
             }
+
             if (this.x - world.character.x < 350 && this.x - world.character.x > 200) {
                 this.walking = true;
                 this.attack = false;
             }
+
             if (this.x - world.character.x < 200) {
                 this.walking = false;
                 this.attack = true;
@@ -116,10 +115,10 @@ class Endboss extends MovableObject {
             if (this.dead && i < 3) {
                 this.playAnimation(this.IMAGES_DEAD);
                 i++;
-
+                showGameWin();
             } else if (this.dead && i >= 3) {
                 this.loadImage('img/4_enemie_boss_chicken/5_dead/G26.png');
-                showGameWin();
+
 
             } else if (this.hurt) {
                 this.playAnimation(this.IMAGES_HURT);

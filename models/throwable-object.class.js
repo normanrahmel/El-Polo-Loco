@@ -1,4 +1,3 @@
-/*
 class ThrowableObject extends MovableObject {
     constructor(x, y) {
         super().loadImage('img/6_salsa_bottle/salsa_bottle.png');
@@ -18,9 +17,9 @@ class ThrowableObject extends MovableObject {
         }, 25);
     }
 }
-*/
 
-/**NEW*/
+
+/**NEW
 class ThrowableObject extends MovableObject {
 
     objectMinY = 365;
@@ -118,3 +117,4 @@ class ThrowableObject extends MovableObject {
         }, 150);
     }
 }
+*/
