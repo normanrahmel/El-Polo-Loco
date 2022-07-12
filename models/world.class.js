@@ -60,7 +60,7 @@ class World {
         this.enemiesCollisions();
         this.coinCollision();
         this.endbossCollisionsWithBottle();
-        //this.chickenCollisionsWithBottle();
+        this.chickenCollisionsWithBottle();
     }
 
 
@@ -92,16 +92,16 @@ class World {
 
     /**
      * Collision detection with Chicken
-
+     */
     chickenCollisionsWithBottle() {
         this.level.enemies.forEach((bottle) => {
             if (this.enemies.isColliding(bottle)) {
-                this.enemies.hit();
+                //this.enemies.hit();
                 this.enemies.energy -= 1;
             }
         });
     }
-     */
+
 
     /**
      * Collision detection with Bottel

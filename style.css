@@ -11,7 +11,7 @@ body {
 }
 
 
-/*control-bar*/
+/*control-bar-    background-color: #994409;*/
 
 .sectionControl {
     flex-direction: column;
@@ -30,7 +30,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: #994409;
+    background-color: #af8568a2;
     border-radius: 0px 0px 20px 20px;
     padding: 16px;
     max-width: 760px;
