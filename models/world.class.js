@@ -4,6 +4,7 @@ class World {
      */
     character = new Character();
     level = level1;
+    endboss = this.level.enemies.find(e => e instanceof Endboss);
     canvas;
     ctx;
     keyboard;
@@ -27,6 +28,7 @@ class World {
 
 
     setWorld() {
+        this.endboss.World = this;
         this.character.World = this;
     }
 

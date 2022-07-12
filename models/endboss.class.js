@@ -1,5 +1,7 @@
 class Endboss extends MovableObject {
 
+    character;
+    world;
     height = 450;
     width = 300;
     energy = 200;
@@ -9,7 +11,7 @@ class Endboss extends MovableObject {
     walking = false;
     hurt = false;
     dead = false;
-    character;
+
 
     IMAGES_WAITING = [
         'img/4_enemie_boss_chicken/2_alert/G5.png',
@@ -86,15 +88,10 @@ class Endboss extends MovableObject {
             if (this.energy <= 0) {
                 this.dead = true;
             }
-            try {
-                if (this.x - world.character.x < 700 && !this.angry) {
-                    world.lifeBarEndboss.height = 60;
-                }
-            } catch (e) {
-                console.log(world.character.x);
-            }
-
-
+            /*
+            if (this.x - world.character.x < 700 && !this.angry) {
+                world.lifeBarEndboss.height = 60;
+            }*/
             if (this.x - world.character.x < 500 && !this.attack && !this.walking) {
                 this.angry = true;
             }
