@@ -45,9 +45,11 @@ class World {
 
 
     checkThrowObjects() {
-        if (this.keyboard.D) {
+        if (this.keyboard.D && this.character.bottels > 0) {
             let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
             this.throwableObjects.push(bottle);
+            this.character.bottels -= 20;
+            this.bottelBar.setPercentage(this.character.bottels);
         }
     }
 
@@ -91,7 +93,7 @@ class World {
 */
 
     /**
-     * Collision detection with Chicken
+     * Collision detection with Chicken & Endboss
      */
     chickenCollisionsWithBottle() {
         this.level.enemies.forEach((enemy) => {
@@ -102,7 +104,7 @@ class World {
                     else
                         enemy.energy -= 1;
                 }
-            })
+            });
         });
     }
 
@@ -112,10 +114,10 @@ class World {
      */
     bottleCollision() {
         this.level.bottle.forEach((bottle, index) => {
-            if (this.character.isColliding(bottle)) {
+            if (this.character.isColliding(bottle) && this.character.bottels < 100) {
                 this.level.bottle.splice(index, 1);
                 this.character.bottels += 20;
-                //this.bottleBar.setPercentage(this.character.bottels);
+                this.bottelBar.setPercentage(this.character.bottels);
             }
         })
     }
