@@ -48,6 +48,7 @@ class World {
         if (this.keyboard.D && this.character.bottels > 0) {
             let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
             this.throwableObjects.push(bottle);
+            //Bottles
             this.character.bottels -= 20;
             this.bottelBar.setPercentage(this.character.bottels);
         }
@@ -129,12 +130,18 @@ class World {
      */
     coinCollision() {
         this.level.coins.forEach((coin, index) => {
-            if (this.character.isColliding(coin)) {
-                this.level.coins.splice(index, 1);
-                //this.coinBar.collectCoin();
-                this.coinBar.setPercentage(this.coinBar.percentage);
-            }
-        })
+                if (this.character.isColliding(coin)) {
+                    this.level.coins.splice(index, 1);
+                    this.character.coins += 20;
+                    this.coinBar.setPercentage(this.coinBar.percentage);
+                    console.log(this.character.coins);
+                }
+            })
+            // if the Coinbar is full it charge your live energy
+        if (this.character.coins == 100) {
+            this.character.energy += 100;
+            this.character.coins -= 100;
+        }
     }
 
 

@@ -43,6 +43,7 @@ class Character extends MovableObject {
 
     walking_sound = new Audio('audio/running.mp3'); //Walking sound. The Mp3 file is not so good i need to look for a better one.
     bottels = 0;
+    coins = 0;
 
     constructor() {
         super().loadImage('./img/2_character_pepe/2_walk/W-21.png');
