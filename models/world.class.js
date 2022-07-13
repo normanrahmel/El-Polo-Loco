@@ -59,7 +59,7 @@ class World {
         this.bottleCollision();
         this.enemiesCollisions();
         this.coinCollision();
-        this.endbossCollisionsWithBottle();
+        //this.endbossCollisionsWithBottle();
         this.chickenCollisionsWithBottle();
     }
 
@@ -79,7 +79,7 @@ class World {
 
     /**
      * Collision detection with Endboss
-     */
+     
     endbossCollisionsWithBottle() {
         this.level.enemies.forEach((bottle) => {
             if (this.endboss.isColliding(bottle)) {
@@ -88,17 +88,21 @@ class World {
             }
         });
     }
-
+*/
 
     /**
      * Collision detection with Chicken
      */
     chickenCollisionsWithBottle() {
-        this.level.enemies.forEach((bottle) => {
-            if (this.enemies.isColliding(bottle)) {
-                //this.enemies.hit();
-                this.enemies.energy -= 1;
-            }
+        this.level.enemies.forEach((enemy) => {
+            this.throwableObjects.forEach(bottle => {
+                if (enemy.isColliding(bottle)) {
+                    if (enemy instanceof Endboss)
+                        enemy.energy -= 25;
+                    else
+                        enemy.energy -= 1;
+                }
+            })
         });
     }
 
