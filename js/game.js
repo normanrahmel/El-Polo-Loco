@@ -82,7 +82,7 @@ function showGame() {
     document.getElementById('removeScreen').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
     document.getElementById('overline').classList.remove('d-none')
-    alert('The game is in beta and not ready yet but feel free to try it out')
+        //alert('The game is in beta and not ready yet but feel free to try it out')
 }
 
 

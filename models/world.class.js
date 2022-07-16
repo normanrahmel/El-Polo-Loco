@@ -62,7 +62,6 @@ class World {
         this.bottleCollision();
         this.enemiesCollisions();
         this.coinCollision();
-        //this.endbossCollisionsWithBottle();
         this.chickenCollisionsWithBottle();
     }
 
@@ -79,19 +78,6 @@ class World {
         });
     }
 
-
-    /**
-     * Collision detection with Endboss
-     
-    endbossCollisionsWithBottle() {
-        this.level.enemies.forEach((bottle) => {
-            if (this.endboss.isColliding(bottle)) {
-                //this.endboss.hit();
-                this.endboss.energy -= 25;
-            }
-        });
-    }
-*/
 
     /**
      * Collision detection with Chicken & Endboss
@@ -130,18 +116,18 @@ class World {
      */
     coinCollision() {
         this.level.coins.forEach((coin, index) => {
-                if (this.character.isColliding(coin)) {
-                    this.level.coins.splice(index, 1);
-                    this.character.coins += 20;
-                    this.coinBar.setPercentage(this.coinBar.percentage);
-                    console.log(this.character.coins);
+            if (this.character.isColliding(coin)) {
+                this.level.coins.splice(index, 1);
+                this.character.coins += 20;
+                this.coinBar.setPercentage(this.character.coins);
+                console.log('Current Coins', this.character.coins);
+                // if the Coinbar is full it charge your live energy
+                if (this.character.coins == 100) {
+                    this.character.energy += 50;
+                    this.character.coins -= 100;
                 }
-            })
-            // if the Coinbar is full it charge your live energy
-        if (this.character.coins == 100) {
-            this.character.energy += 100;
-            this.character.coins -= 100;
-        }
+            }
+        })
     }
 
 
