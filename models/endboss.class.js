@@ -29,21 +29,21 @@ class Endboss extends MovableObject {
     ];
 
     IMAGES_ALERT = [
-        // 'img/4_enemie_boss_chicken/2_alert/G5.png',
-        // 'img/4_enemie_boss_chicken/2_alert/G6.png',
-        // 'img/4_enemie_boss_chicken/2_alert/G7.png',
-        // 'img/4_enemie_boss_chicken/2_alert/G8.png',
+        'img/4_enemie_boss_chicken/2_alert/G5.png',
+        'img/4_enemie_boss_chicken/2_alert/G6.png',
+        'img/4_enemie_boss_chicken/2_alert/G7.png',
+        'img/4_enemie_boss_chicken/2_alert/G8.png',
         'img/4_enemie_boss_chicken/2_alert/G9.png',
         'img/4_enemie_boss_chicken/2_alert/G10.png',
         'img/4_enemie_boss_chicken/2_alert/G11.png',
-        // 'img/4_enemie_boss_chicken/2_alert/G12.png',
+        'img/4_enemie_boss_chicken/2_alert/G12.png',
     ];
 
     IMAGES_ATTACK = [
-        // 'img/4_enemie_boss_chicken/3_attack/G13.png',
-        // 'img/4_enemie_boss_chicken/3_attack/G14.png',
-        // 'img/4_enemie_boss_chicken/3_attack/G15.png',
-        // 'img/4_enemie_boss_chicken/3_attack/G16.png',
+        'img/4_enemie_boss_chicken/3_attack/G13.png',
+        'img/4_enemie_boss_chicken/3_attack/G14.png',
+        'img/4_enemie_boss_chicken/3_attack/G15.png',
+        'img/4_enemie_boss_chicken/3_attack/G16.png',
         'img/4_enemie_boss_chicken/3_attack/G17.png',
         'img/4_enemie_boss_chicken/3_attack/G18.png',
         'img/4_enemie_boss_chicken/3_attack/G19.png',
@@ -53,7 +53,8 @@ class Endboss extends MovableObject {
     IMAGES_HURT = [
         'img/4_enemie_boss_chicken/4_hurt/G21.png',
         'img/4_enemie_boss_chicken/4_hurt/G22.png',
-        'img/4_enemie_boss_chicken/4_hurt/G23.png'
+        'img/4_enemie_boss_chicken/4_hurt/G23.png',
+
     ]
 
     IMAGES_DEAD = [
@@ -81,7 +82,7 @@ class Endboss extends MovableObject {
         }, 200);
 
     }
-
+    gameWin = new Audio('audio/win.mp3');
     animate() {
 
         setInterval(() => {
@@ -113,18 +114,14 @@ class Endboss extends MovableObject {
 
         setInterval(() => {
             if (this.dead && i < 3) {
-                this.playAnimation(this.IMAGES_DEAD);
-                i++;
-                showGameWin();
+                this.enbossISDead(i);
+
             } else if (this.dead && i >= 3) {
                 this.loadImage('img/4_enemie_boss_chicken/5_dead/G26.png');
 
 
             } else if (this.hurt) {
-                this.playAnimation(this.IMAGES_HURT);
-                setTimeout(() => {
-                    this.hurt = false;
-                }, 500);
+                this.hurtAnimation();
 
             } else if (!this.angry && !this.angry) {
                 this.playAnimation(this.IMAGES_WAITING);
@@ -156,4 +153,22 @@ class Endboss extends MovableObject {
             }
         }, 1000 / 144);
     }
+
+
+    hurtAnimation() {
+        this.playAnimation(this.IMAGES_HURT);
+        this.playHurtSound();
+        setTimeout(() => {
+            this.hurt = false;
+        }, 800);
+    }
+
+    enbossISDead(i) {
+        this.playAnimation(this.IMAGES_DEAD);
+        i++;
+        this.gameWin.play();
+        showGameWin();
+        this.gameWin.pause();
+    }
+
 }
