@@ -83,6 +83,8 @@ class Endboss extends MovableObject {
 
     }
     gameWin = new Audio('audio/win.mp3');
+    playHurtSound = new Audio('audio/hurt.mp3');
+
     animate() {
 
         setInterval(() => {
@@ -157,7 +159,7 @@ class Endboss extends MovableObject {
 
     hurtAnimation() {
         this.playAnimation(this.IMAGES_HURT);
-        this.playHurtSound();
+        this.playHurtSound.play();
         setTimeout(() => {
             this.hurt = false;
         }, 800);
@@ -168,7 +170,8 @@ class Endboss extends MovableObject {
         i++;
         this.gameWin.play();
         showGameWin();
-        this.gameWin.pause();
+        this.gameWin.loop = false;
+        //this.gameWin.pause();
     }
 
 }
