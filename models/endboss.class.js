@@ -2,6 +2,7 @@ class Endboss extends MovableObject {
 
     character;
     world;
+    chicken;
     height = 450;
     width = 300;
     energy = 250;
@@ -63,6 +64,8 @@ class Endboss extends MovableObject {
         'img/4_enemie_boss_chicken/5_dead/G26.png'
     ]
 
+    gameWin = new Audio('audio/win.mp3');
+
 
     constructor() {
         super().loadImage(this.IMAGES_WAITING[0]);
@@ -82,8 +85,7 @@ class Endboss extends MovableObject {
         }, 200);
 
     }
-    gameWin = new Audio('audio/win.mp3');
-    playHurtSound = new Audio('audio/hurt.mp3');
+
 
     animate() {
 
@@ -144,6 +146,7 @@ class Endboss extends MovableObject {
 
         }, 175);
 
+
         setInterval(() => {
             if (this.walking && !this.hurt && !this.dead || this.attack && !this.hurt && !this.dead) {
                 if (this.x - world.character.x >= 50) {
@@ -159,19 +162,16 @@ class Endboss extends MovableObject {
 
     hurtAnimation() {
         this.playAnimation(this.IMAGES_HURT);
-        this.playHurtSound.play();
         setTimeout(() => {
             this.hurt = false;
         }, 800);
     }
 
+
     enbossISDead(i) {
         this.playAnimation(this.IMAGES_DEAD);
         i++;
-        this.gameWin.play();
         showGameWin();
-        this.gameWin.loop = false;
-        //this.gameWin.pause();
     }
 
 }

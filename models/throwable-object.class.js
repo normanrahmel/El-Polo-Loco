@@ -56,7 +56,8 @@ class ThrowableObject extends MovableObject {
 
     animate() {
         setInterval(() => {
-            if (this.energy <= 0) this.bottleDistroy();
+            if (this.energy <= 0)
+                this.bottleDistroy();
 
             else if (this.y !== this.objectMinY) {
                 this.playAnimation(this.IMAGES_THROW);

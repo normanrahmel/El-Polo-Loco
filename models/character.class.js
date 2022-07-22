@@ -42,8 +42,10 @@ class Character extends MovableObject {
     ];
 
     walking_sound = new Audio('audio/running.mp3'); //Walking sound. The Mp3 file is not so good i need to look for a better one.
+    playJumpSound = new Audio('audio/jump.mp3');
     bottels = 0;
     coins = 0;
+
 
 
     constructor() {
@@ -102,6 +104,7 @@ class Character extends MovableObject {
 
     jump() {
         this.speedY = 30;
+        this.playJumpSound.play();
     }
 
 }

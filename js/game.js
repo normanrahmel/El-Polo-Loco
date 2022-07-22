@@ -54,6 +54,8 @@ window.addEventListener('keyup', (e) => {
     console.log(e)
 });
 
+
+
 function showGameLose() {
     setTimeout(() => {
         document.getElementById('canvas').classList.add('d-none');
@@ -61,6 +63,7 @@ function showGameLose() {
         document.getElementById('overline').classList.add('d-none');
         document.getElementById('removeGameOver').classList.add('d-none');
         document.getElementById('control-bar').classList.add('d-none');
+
     }, 1000);
 
 }
@@ -82,7 +85,7 @@ function showGame() {
     document.getElementById('removeScreen').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
     document.getElementById('overline').classList.remove('d-none');
-    alert('The game is in beta and not ready yet but feel free to try it out')
+    //alert('The game is in beta and not ready yet but feel free to try it out')
 }
 
 

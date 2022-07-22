@@ -10,6 +10,8 @@ class MovableObject extends DrawableObject {
     lastHit = 0;
 
 
+
+
     /**
      * Makes the spring function of the objects
      */

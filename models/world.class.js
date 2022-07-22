@@ -15,6 +15,11 @@ class World {
     coin = new Coin();
     bottle = new Bottle();
     throwableObjects = [];
+    playHurtSound = new Audio('audio/hurt.mp3');
+    playCoinSound = new Audio('audio/coin.mp3');
+    gameWin = new Audio('audio/win.mp3');
+    playChampionSound = new Audio('audio/champion.mp3');
+    loserSound = new Audio('audio/loser.mp3');
 
 
     constructor(canvas, keyboard) {
@@ -48,6 +53,7 @@ class World {
         if (this.keyboard.D && this.character.bottels > 0) {
             let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
             this.throwableObjects.push(bottle);
+
             //Bottles
             this.character.bottels -= 20;
             this.bottelBar.setPercentage(this.character.bottels);
@@ -66,6 +72,8 @@ class World {
     }
 
 
+
+
     /**
      * Collision detection with Chicken and Endboss
      */
@@ -73,7 +81,11 @@ class World {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
+                this.playHurtSound.play();
                 this.statusBar.setPercentage(this.character.energy);
+                if (this.character.energy <= 0) {
+                    this.soundsWhenPepeIsDead();
+                }
             }
         });
     }
@@ -86,13 +98,40 @@ class World {
         this.level.enemies.forEach((enemy) => {
             this.throwableObjects.forEach(bottle => {
                 if (enemy.isColliding(bottle)) {
-                    if (enemy instanceof Endboss)
+                    if (enemy instanceof Endboss) {
                         enemy.energy -= 25;
-                    else
+                        this.playHurtSound.play();
+                        if (enemy.energy < 0) {
+                            this.soundsWhenTheEndbossIsDead();
+                        }
+                    } else {
                         enemy.energy -= 1;
+                        this.playHurtSound.play();
+                        if (this.character.energy <= 0) {
+                            this.playHurtSound.pause();
+                        }
+                    }
                 }
             });
         });
+    }
+
+
+    soundsWhenTheEndbossIsDead() {
+        this.playHurtSound.pause();
+        this.gameWin.play();
+        setTimeout(() => {
+            this.playChampionSound.play();
+        }, 2000);
+    }
+
+
+    soundsWhenPepeIsDead() {
+        this.loserSound.play();
+        this.playHurtSound.pause();
+        setTimeout(() => {
+            this.loserSound.pause();
+        }, 3600);
     }
 
 
@@ -104,6 +143,7 @@ class World {
             if (this.character.isColliding(bottle) && this.character.bottels < 100) {
                 this.level.bottle.splice(index, 1);
                 this.character.bottels += 20;
+                this.playCoinSound.play();
                 this.bottelBar.setPercentage(this.character.bottels);
             }
         })
@@ -119,8 +159,8 @@ class World {
             if (this.character.isColliding(coin)) {
                 this.level.coins.splice(index, 1);
                 this.character.coins += 20;
+                this.playCoinSound.play();
                 this.coinBar.setPercentage(this.character.coins);
-                console.log('Current Coins', this.character.coins);
                 // if the Coinbar is full it charge your live energy
                 if (this.character.coins == 100) {
                     this.character.energy += 50;
