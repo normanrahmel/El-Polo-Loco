@@ -20,6 +20,8 @@ class World {
     gameWin = new Audio('audio/win.mp3');
     playChampionSound = new Audio('audio/champion.mp3');
     loserSound = new Audio('audio/loser.mp3');
+    walking_sound = new Audio('audio/chicken.mp3');
+
 
 
     constructor(canvas, keyboard) {
@@ -81,6 +83,7 @@ class World {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
+                this.walking_sound.play();
                 this.playHurtSound.play();
                 this.statusBar.setPercentage(this.character.energy);
                 if (this.character.energy <= 0) {
@@ -119,6 +122,7 @@ class World {
 
     soundsWhenTheEndbossIsDead() {
         this.playHurtSound.pause();
+        this.walking_sound.pause();
         this.gameWin.play();
         setTimeout(() => {
             this.playChampionSound.play();
@@ -127,8 +131,9 @@ class World {
 
 
     soundsWhenPepeIsDead() {
-        this.loserSound.play();
+        this.walking_sound.pause();
         this.playHurtSound.pause();
+        this.loserSound.play();
         setTimeout(() => {
             this.loserSound.pause();
         }, 3600);
