@@ -74,8 +74,6 @@ class World {
     }
 
 
-
-
     /**
      * Collision detection with Chicken and Endboss
      */
@@ -155,7 +153,6 @@ class World {
     }
 
 
-
     /*
      * Collision detection with Coins
      */
@@ -210,6 +207,7 @@ class World {
         });
     }
 
+
     /**
      * Sets the Objects 
      * The objects are the Background, Clouds, Chicken 
@@ -219,6 +217,7 @@ class World {
             this.addToMap(o);
         });
     }
+
 
     /**
      * It summarizes the mo because all are equal
